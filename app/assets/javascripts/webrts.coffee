@@ -2,6 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
-    console.log "hej"
     $(this).parent().fadeOut('slow')
+
+
+###Draw the Map###
+drawMap = (mapSize) ->
+  map = $('#game_map')
+  $map.empty()
+  for x in [0...mapSize]
+    row = $('<div>').addClass('map_row_' + x.toString())
+    map.append(row)
+    for y in [0...mapSize]
+      tile = $('<div class="map_tile x_' + x.toString() + ' y_' + y.toString() + '">')
+      row.append(tile)

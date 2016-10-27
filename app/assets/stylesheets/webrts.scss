@@ -310,3 +310,14 @@ $flashes: (
   }
 
 }
+
+//Container for the game map
+#game_map {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  margin: 0 auto;
+  overflow: hidden;
+  border: solid #222222 1px;
+  background-color: #666666;
+}
