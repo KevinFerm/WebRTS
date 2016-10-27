@@ -313,45 +313,68 @@ $flashes: (
 
 //Container for the game map
 #game_map {
-  width: 505px;
-  height: 505px;
+  width: 386px;
+  height: 386px;
   overflow: hidden;
   white-space: nowrap;
   border: solid #222222 1px;
   background-color: #666666;
+  display: inline-block;
+  position: relative;
+  margin-top: -7px;
   .map_row {
     width: 100%;
     position: static;
-    height: 50px;
+    height: 32px;
     .map_tile {
-      width: 50px;
-      height: 50px;
+      width: 32px;
+      height: 32px;
       float: left;
       border: solid #222222 1px;
       background-color: #3d8b3d;
       display: inline-block;
     }
   }
+}
 
-  #left_button {
-    width: 15px;
-    height: 505px;
-    background-color: #00B2F6;
-  }
-  #right_button {
-    width: 15px;
-    height: 505px;
-    background-color: #00B2F6;
-  }
-  #down_button {
-    width: 505px;
-    height: 15px;
-    background-color: #00B2F6;
-  }
-  #up_button {
-    width: 505px;
-    height: 15px;
-    background-color: #00B2F6;
-  }
+#game_container {
+  width: 386+32px;
+  height: 386+0px;
+  margin: 0 auto;
+  display: inline-block;
+}
 
+#left_button {
+  width: 15px;
+  height: 386px;
+  float: left;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 23px;
+  background-color: #00B2F6;
+}
+#right_button {
+  width: 15px;
+  height: 386px;
+  float: right;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 23px;
+  background-color: #00B2F6;
+}
+#down_button {
+  width: 386px;
+  height: 15px;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: -15px;
+  margin-left: 15px;
+  background-color: #00B2F6;
+}
+#up_button {
+  width: 386px;
+  height: 15px;
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #00B2F6;
 }

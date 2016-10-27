@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   #DrawMap
-  drawMap2(50,50,10)
+  drawMap2(50,50,12)
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
     $(this).parent().fadeOut('slow')
