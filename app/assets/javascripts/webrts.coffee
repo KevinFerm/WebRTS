@@ -3,27 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   #DrawMap
-  drawMap2(50,50,12)
+  drawMap(50,50,12)
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
     $(this).parent().fadeOut('slow')
 
 
-###Draw the Map###
-###Didn't work really, trying new function###
-drawMap = (mapSize) ->
-  map = $('#game_map')
-  for x in [0...mapSize]
-    row = $('<div>').addClass('map_row ' + x.toString())
-    map.append(row)
-    for y in [0...mapSize]
-      tile = $('<div class="map_tile x_' + x.toString() + ' y_' + y.toString() + '">')
-      row.append(tile)
-      console.log "Draw tile"
 
 #Draw map in a size x size grid, with the coordinates in the middle
-#pos 50,50 with a size of 10x(x,y) shows rows 45-55 and + and - 10 in each row from 50
-drawMap2 = (x,y,size) ->
+#pos 50,50 with a size of 10x(x,y) shows rows 45-55 and + and - 5 in each row from 50
+drawMap = (x,y,size) ->
   map = $('#game_map')
   map.empty()
   for xval in [(x-(size/2))...(x+(size/2))]
