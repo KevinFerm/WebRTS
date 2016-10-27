@@ -17,6 +17,6 @@ class Users::SessionsController < Devise::SessionsController
    end
    protected
    def configure_sign_in_params
-     devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:username, :permissions, :points, :rank, :attribute])
    end
 end
