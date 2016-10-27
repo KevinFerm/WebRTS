@@ -4,6 +4,7 @@
 $ ->
   #DrawMap
   drawMap(50,50,12)
+
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
     $(this).parent().fadeOut('slow')
@@ -12,6 +13,7 @@ $ ->
 
 #Draw map in a size x size grid, with the coordinates in the middle
 #pos 50,50 with a size of 10x(x,y) shows rows 45-55 and + and - 5 in each row from 50
+#Probably rewrite in Rails would be better, and then loading partials, then the Map model could be used
 drawMap = (x,y,size) ->
   map = $('#game_map')
   map.empty()
