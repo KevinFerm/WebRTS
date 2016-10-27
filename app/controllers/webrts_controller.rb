@@ -1,0 +1,2 @@
+class WebrtsController < ApplicationController
+end

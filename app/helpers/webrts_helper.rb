@@ -1,0 +1,2 @@
+module WebrtsHelper
+end
