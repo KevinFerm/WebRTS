@@ -275,3 +275,38 @@ button.btn.btn-lg.btn-primary.btn-block{
   background-color:#F64;
   border:0px;
 }
+/*Flashes*/
+
+$dr-defaults-font-family: "Open Sans", arial, sans-serif;
+$base-spacing: 1.5em !default;
+$flashes: (
+        "error": #E35B40,
+        "notice": #00B2F6,
+        "success": #8DC241,
+) !default;
+
+.Flash {
+  font-family: $dr-defaults-font-family;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 1.5rem;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  &-dismiss {
+    float: right;
+  }
+
+  @each $flash-type, $color in $flashes {
+    &--#{$flash-type} {
+      background-color: $color;
+      margin-bottom: $base-spacing / 2;
+      padding: $base-spacing / 2;
+    }
+  }
+
+}

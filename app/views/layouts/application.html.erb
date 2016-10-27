@@ -18,7 +18,6 @@
 
   <body>
   <div id="wrapper">
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -183,10 +182,31 @@
 
     </div>
     <!-- /#page-wrapper -->
+    <!--Flashes-->
+    <% if flash[:notice] %>
+        <div class="Flash Flash--success">
+          <div class="Flash-dismiss">
+            <a>
+              <svg width="20px" height="20px" viewBox="0 0 47 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="close" stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" transform="translate(1.000000, 1.000000)"><g id="Page-1" stroke-width="3" stroke="#fff"><g id="Icon-64"><g id="Page-1"><path d="M44.4142,0.4142 L0.4142,44.4142" id="Stroke-1"></path><path d="M44.4142,44.4142 L0.4142,0.4142" id="Stroke-3"></path></g></g></g></g>
+              </svg>
+            </a>
+          </div>
+          <span><%= notice %></span>
+        </div>
+    <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if flash[:alert] %>
+        <div class="Flash Flash--error">
+          <div class="Flash-dismiss">
+            <a>
+              <svg width="20px" height="20px" viewBox="0 0 47 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="close" stroke="none" stroke-width="3" fill="none" fill-rule="evenodd" transform="translate(1.000000, 1.000000)"><g id="Page-1" stroke-width="3" stroke="#fff"><g id="Icon-64"><g id="Page-1"><path d="M44.4142,0.4142 L0.4142,44.4142" id="Stroke-1"></path><path d="M44.4142,44.4142 L0.4142,0.4142" id="Stroke-3"></path></g></g></g></g>
+              </svg>
+            </a>
+          </div>
+          <span><%= alert %></span>
+        </div>
+    <% end %>
+        <%= yield %>
   </div>
   <!-- /#wrapper -->
   </body>
