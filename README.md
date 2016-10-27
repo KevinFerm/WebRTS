@@ -6,3 +6,6 @@ current_user
 
 
 * Don't forget that everyone is admin - user model isAdmin?
+
+#Game Info
+Town max level = 16

@@ -2,3 +2,7 @@
 <% if current_user.isAdmin? %>
     You are admin man!!
 <% end %>
+
+<% @maps.each do |map| %>
+    <%= map.x %>,<%= map.y %>
+<% end %>
