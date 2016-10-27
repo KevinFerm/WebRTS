@@ -229,3 +229,49 @@ ul.alert-dropdown {
   position:absolute;
 
 }
+.col-centered {
+  max-width: 900px;
+  /* reset the text-align */
+  text-align:left;
+  /* inline-block space fix */
+  margin:0 auto;
+}
+/*Form stuff*/
+.form-user {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-user .form-signin-heading,
+.form-user .checkbox {
+  margin-bottom: 10px;
+}
+.form-user .checkbox {
+  font-weight: normal;
+}
+.form-user .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-user .form-control:focus {
+  z-index: 2;
+}
+.form-user input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-user input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+button.btn.btn-lg.btn-primary.btn-block{
+  background-color:#F64;
+  border:0px;
+}
