@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "webrts#index"
 
-  get '/profile/:username', to: 'webrts#profile', as: 'patient'
+  get '/profile/:username', to: 'webrts#profile', as: 'profile'
   get '/profile', to: 'webrts#profile'
 end
