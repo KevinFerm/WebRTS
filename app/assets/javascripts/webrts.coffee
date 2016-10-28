@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   #DrawMap
-  drawMap(50,50,12)
+  #drawMap(50,50,12)
 
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->

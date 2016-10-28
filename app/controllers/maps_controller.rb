@@ -1,5 +1,8 @@
 class MapsController < ApplicationController
-  def map
-    @map = getMapData(params[:x],params[:y],params[:size])
+  def getMapData
+    @map = Map.getMapData(params[:x],params[:y],params[:size])
+    @size = params[:size]
+    @middle = params[:x] +','+params[:y]
+    render 'map'
   end
 end
