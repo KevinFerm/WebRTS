@@ -1,12 +1,9 @@
-
-  <div id="game_map">
-    <% @map.each_with_index do |tiles, row| %>
-        <div class="map_row <%= row %>" id="<%= @middle %>">
-        <% tiles.each do |tile| %>
-              <div class="map_tile" id="<%= tile.x %>,<%= tile.y %>">
-                <%= tile.x %>,<%= tile.y %>
-              </div>
-        <% end %>
+ <% @map.each_with_index do |tiles, row| %>
+  <div class="map_row <%= row %>" id="<%= @middle %>">
+    <% tiles.each do |tile| %>
+        <div class="map_tile" id="<%= tile.x %>,<%= tile.y %>">
+          <%= tile.x %>,<%= tile.y %>
         </div>
     <% end %>
   </div>
+ <% end %>
