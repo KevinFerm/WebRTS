@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get '/profile/:username', to: 'webrts#profile', as: 'profile'
   get '/profile', to: 'webrts#profile'
+
 end

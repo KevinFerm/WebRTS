@@ -9,3 +9,11 @@ current_user
 
 #Game Info
 Town max level = 16
+
+#Types of infantry
+* Soldier
+* Bowman*
+* Sapper*
+* Ballista*
+
+*Planned only
