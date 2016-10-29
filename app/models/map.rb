@@ -15,6 +15,7 @@ class Map < ApplicationRecord
       for yval in (yc-(size/2))...(yc+(size/2))
         tile = map.find {|z| z[:x] == xval && z[:y] == yval}
         town = towns.find {|z| z[:x] == xval && z[:y] == yval}
+
         if town
           tile[:town] = town
         end

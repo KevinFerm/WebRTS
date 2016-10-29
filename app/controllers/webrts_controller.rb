@@ -2,6 +2,7 @@ class WebrtsController < ApplicationController
   before_action :authenticate_user!
   def index
     @maps = Map.all
+    @towns = Town.all
   end
 
   #Find the profile you're trying to view

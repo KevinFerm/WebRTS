@@ -2,6 +2,9 @@
 <% if current_user.isAdmin? %>
     You are admin man!!
 <% end %>
+<% @towns.each do |x| %>
+    <%= x %>
+<% end %>
 <div id="row">
     <h2>Game Map</h2>
   <div id="game_container">

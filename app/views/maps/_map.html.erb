@@ -2,7 +2,9 @@
   <div class="map_row <%= row %>" id="<%= @x %>,<%= @y %>">
     <% tiles.each do |tile| %>
         <div class="map_tile" id="<%= tile.x %>,<%= tile.y %>">
-          <%= tile.x %>,<%= tile.y %>
+          <% if tile.town %>
+              <%= tile.x %>,<%= tile.y %>
+        <% end %>
         </div>
     <% end %>
   </div>
