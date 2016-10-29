@@ -1,0 +1,17 @@
+<h2>Town</h2>
+<% if @town.user %>
+    <h3>Owner: <%= @town.user.username.titleize %></h3>
+    <% else %>
+    <h3>Abandoned</h3>
+<% end %>
+<h3>Level: <%= @town.level %></h3>
+<h3>X: <%= @town.x %> Y: <%= @town.y %> - Show on map</h3>
+<p>
+  <% if @town.user == current_user %>
+    <h2>Support with troops:</h2>
+    <h2>Population:</h2>
+    <h2>Incoming Attacks:</h2>
+    <h2>Build:</h2>
+
+  <% end %>
+</p>

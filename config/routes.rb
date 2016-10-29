@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get '/profile/:username', to: 'webrts#profile', as: 'profile'
   get '/profile', to: 'webrts#profile'
   post '/getmapdata', to: 'maps#getMapData'
-  get '/town/:id', to 'towns#town', as: 'town'
+  get '/town/:id', to: 'towns#town', as: 'town'
 end

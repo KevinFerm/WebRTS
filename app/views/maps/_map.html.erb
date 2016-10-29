@@ -5,12 +5,12 @@
           <% if tile.town %>
               <% if tile.town.user_id %>
                 <% if tile.town.user_id == current_user.id %>
-                  <div class="town_user"></div>
+                  <%= link_to '<div class="town_user"></div>'.html_safe, town_path(tile.town.id) %>
                 <% else %>
-                  <div class="town_enemy"></div>
+                      <%= link_to '<div class="town_enemy"></div>'.html_safe, town_path(tile.town.id) %>
                 <% end %>
               <% else %>
-                <div class="town_empty"></div>
+                  <%= link_to '<div class="town_empty"></div>'.html_safe, town_path(tile.town.id) %>
               <% end %>
         <% end %>
         </div>
