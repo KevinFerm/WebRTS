@@ -4,8 +4,9 @@
 $ ->
   #DrawMap
   #drawMap(50,50,12)
-  mapstart = $('#game_map').attr("mapstart").split(',')
-  renderMap(mapstart[0], mapstart[1], $('#game_map').attr("mapsize"))
+  if $('#game_map')
+    mapstart = $('#game_map').attr("mapstart").split(',')
+    renderMap(mapstart[0], mapstart[1], $('#game_map').attr("mapsize"))
 
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
