@@ -3,8 +3,14 @@
     <% tiles.each do |tile| %>
         <div class="map_tile" id="<%= tile.x %>,<%= tile.y %>">
           <% if tile.town %>
-              <% if tile.town.user_id == current_user.id %>
-                <div class="town_user"></div>
+              <% if tile.town.user_id %>
+                <% if tile.town.user_id == current_user.id %>
+                  <div class="town_user"></div>
+                <% else %>
+                  <div class="town_enemy"></div>
+                <% end %>
+              <% else %>
+                <div class="town_empty"></div>
               <% end %>
         <% end %>
         </div>
