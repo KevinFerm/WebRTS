@@ -12,5 +12,16 @@
     <h2>Population:</h2>
     <h2>Incoming Attacks:</h2>
     <h2>Build:</h2>
+    Cost: 10 coins per 5x built
+    <%= form_tag("/town/build", method: "POST") do %>
+        <%= label_tag :amount, "5x" %>
+        <%= number_field_tag :amount,nil, in: 1...(current_user.coins/10) %>
+        <%= label_tag :type, "Type of troop" %>
+        <%= select_tag :type, '<option value="bowmen">Bowmen</option><option value="swordsmen">Swordsmen</option>'.html_safe %>
+        <%= submit_tag "Start building" %>
+
+
+        <%= hidden_field_tag :town_id, @town.id %>
+    <% end %>
   <% end %>
 </p>

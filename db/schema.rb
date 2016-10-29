@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029201748) do
+ActiveRecord::Schema.define(version: 20161029221302) do
+
+  create_table "buildings", force: :cascade do |t|
+    t.string   "troop_type", default: "", null: false
+    t.integer  "amount",     default: 0,  null: false
+    t.integer  "done_at",    default: 0,  null: false
+    t.integer  "town_id",                 null: false
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "maps", force: :cascade do |t|
     t.integer  "x"
@@ -19,14 +29,29 @@ ActiveRecord::Schema.define(version: 20161029201748) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movements", force: :cascade do |t|
+    t.boolean  "type",       default: false, null: false
+    t.integer  "bowmen",     default: 0,     null: false
+    t.integer  "swordsmen",  default: 0,     null: false
+    t.integer  "from_town",  default: 0,     null: false
+    t.integer  "to_town",    default: 0,     null: false
+    t.integer  "from",                       null: false
+    t.integer  "to",                         null: false
+    t.integer  "done_at",    default: 0,     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "towns", force: :cascade do |t|
     t.integer  "x"
     t.integer  "y"
     t.integer  "level"
     t.string   "population"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
+    t.integer  "swordsmen",  default: 0, null: false
+    t.integer  "bowmen",     default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
