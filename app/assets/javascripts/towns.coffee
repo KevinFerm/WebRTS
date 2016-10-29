@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 CountDownTimer = (dt, selector) ->
-  #selector = document.getElementById(id)
-  end = new Date(dt*1000)
+  end = new Date(dt*1000) #Unix timestamp from the DB
   _second = 1000
   _minute = _second * 60
   _hour = _minute * 60

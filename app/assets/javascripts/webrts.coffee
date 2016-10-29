@@ -12,6 +12,9 @@ $ ->
   $('.Flash-dismiss').on "click", ->
     $(this).parent().fadeOut('slow')
 
+    ######
+    #####MAP NAVIGATION BLOCK START
+    ######
   $('#up_button').on "click", ->
     console.log "Navigating map UP"
     mapstart = $('#game_map').attr("mapstart").split(',')
@@ -39,7 +42,11 @@ $ ->
     y = +mapstart[1]+5
     renderMap((+mapstart[0]), (+mapstart[1]+5), $('#game_map').attr("mapsize"))
     $('#game_map').attr("mapstart", mapstart[0].toString()+","+y.toString())
+    ######
+    #####MAP NAVIGATION BLOCK END
+    ######
 
+#Self explanatory, renders the map based on data from the server
 renderMap = (x,y,size) ->
   if $('#game_map')
     $('#game_map').empty()

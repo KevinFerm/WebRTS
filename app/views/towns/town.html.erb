@@ -8,8 +8,9 @@
 <h3>X: <%= @town.x %> Y: <%= @town.y %> - Show on map</h3>
 <p>
   <% if @town.user == current_user %>
+    <h2>Troops</h2>
     <h2>Support with troops:</h2>
-    <h2>Population:</h2>
+    <h2>Queue:</h2>
     <% if @building %>
       <% @building.each do |inst| %>
             <div class="build">
@@ -19,6 +20,7 @@
     <% end %>
     <h2>Incoming Attacks:</h2>
     <h2>Build:</h2>
+    Coins: <%= current_user.coins %> <br>
     Cost: 10 coins per 5x built
     <%= form_tag("/town/build", method: "POST") do %>
         <%= label_tag :amount, "5x" %>
