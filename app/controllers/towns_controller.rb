@@ -1,6 +1,7 @@
 class TownsController < ApplicationController
   def town
     @town = Town.find(params[:id])
+    @building = Building.where(town_id:@town.id)
   end
 
   def build
@@ -13,7 +14,7 @@ class TownsController < ApplicationController
     end
     if Building.build(params[:type], params[:town_id], current_user.id, params[:amount])
       flash[:notice] = "You have successfully started building your troops!"
-      current_user.coins = current_user.coints-(params[:amount]*10)
+      current_user.coins = current_user.coins-(params[:amount].to_i*10)
       current_user.save
       redirect_to town_url(params[:town_id])
     else

@@ -4,7 +4,7 @@
 $ ->
   #DrawMap
   #drawMap(50,50,12)
-  if $('#game_map')
+  if $('#game_map').attr("mapstart")
     mapstart = $('#game_map').attr("mapstart").split(',')
     renderMap(mapstart[0], mapstart[1], $('#game_map').attr("mapsize"))
 

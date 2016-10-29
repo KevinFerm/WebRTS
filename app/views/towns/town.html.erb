@@ -10,6 +10,13 @@
   <% if @town.user == current_user %>
     <h2>Support with troops:</h2>
     <h2>Population:</h2>
+    <% if @building %>
+      <% @building.each do |inst| %>
+            <div class="build">
+              <%= inst.amount %>x <%= inst.troop_type %><div class="countdown" id=<%= inst.done_at %>></div>
+            </div>
+      <% end %>
+    <% end %>
     <h2>Incoming Attacks:</h2>
     <h2>Build:</h2>
     Cost: 10 coins per 5x built
