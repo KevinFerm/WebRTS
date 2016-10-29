@@ -379,3 +379,27 @@ $flashes: (
   margin: 0 auto;
   background-color: #00B2F6;
 }
+
+.town_empty {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #999999;
+  margin: auto;
+}
+
+.town_enemy {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #730E15;
+  margin: auto;
+}
+
+.town_user {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #5cb85c;
+  margin: auto;
+}

@@ -1,6 +1,7 @@
 class Map < ApplicationRecord
   belongs_to :town, optional:true
   validates :x, uniqueness: {scope: :y}
+  attr_accessor :town
 
   def self.getMapData(xc,yc,size)
     xc = xc.to_i
@@ -17,7 +18,7 @@ class Map < ApplicationRecord
         town = towns.find {|z| z[:x] == xval && z[:y] == yval}
 
         if town
-          tile[:town] = town
+          tile.town = town
         end
 
         if !tile.nil?
