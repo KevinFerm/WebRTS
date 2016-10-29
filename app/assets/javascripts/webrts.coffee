@@ -4,24 +4,52 @@
 $ ->
   #DrawMap
   #drawMap(50,50,12)
+  mapstart = $('#game_map').attr("mapstart").split(',')
+  renderMap(mapstart[0], mapstart[1], $('#game_map').attr("mapsize"))
 
   #Makes the flash messages disappear
   $('.Flash-dismiss').on "click", ->
     $(this).parent().fadeOut('slow')
 
-  if $('#game_map')
+  $('#up_button').on "click", ->
+    console.log "Navigating map UP"
     mapstart = $('#game_map').attr("mapstart").split(',')
+    x = +mapstart[0]-5
+    renderMap((+mapstart[0]-5), mapstart[1], $('#game_map').attr("mapsize"))
+    $('#game_map').attr("mapstart", x.toString()+","+mapstart[1].toString())
+
+  $('#down_button').on "click", ->
+    console.log "Navigating map DOWN"
+    mapstart = $('#game_map').attr("mapstart").split(',')
+    x = +mapstart[0]+5
+    renderMap((+mapstart[0]+5), mapstart[1], $('#game_map').attr("mapsize"))
+    $('#game_map').attr("mapstart", x.toString()+","+mapstart[1].toString())
+
+  $('#left_button').on "click", ->
+    console.log "Navigating map LEFT"
+    mapstart = $('#game_map').attr("mapstart").split(',')
+    y = +mapstart[1]-5
+    renderMap((+mapstart[0]), (+mapstart[1]-5), $('#game_map').attr("mapsize"))
+    $('#game_map').attr("mapstart", mapstart[0].toString()+","+y.toString())
+
+  $('#right_button').on "click", ->
+    console.log "Navigating map RIGHT"
+    mapstart = $('#game_map').attr("mapstart").split(',')
+    y = +mapstart[1]+5
+    renderMap((+mapstart[0]), (+mapstart[1]+5), $('#game_map').attr("mapsize"))
+    $('#game_map').attr("mapstart", mapstart[0].toString()+","+y.toString())
+
+renderMap = (x,y,size) ->
+  if $('#game_map')
+    $('#game_map').empty()
     $.ajax '/getmapdata',
       type: 'POST'
       dataType: 'html'
-      data: {x:mapstart[0], y:mapstart[1], size:$('#game_map').attr("mapsize")}
+      data: {x:x, y:y, size:size}
       error: (jqXHR, textStatus, errorThrown) ->
         console.log textStatus
       success: (data, textStatus, jqXHR) ->
-        $('#game_map').empty()
         $('#game_map').append(data)
-
-
 
 #Draw map in a size x size grid, with the coordinates in the middle
 #pos 50,50 with a size of 10x(x,y) shows rows 45-55 and + and - 5 in each row from 50
