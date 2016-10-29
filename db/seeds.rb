@@ -8,7 +8,12 @@
 map_size = 100
 map_size.times do |xv|
   map_size.times do |yv|
-    Map.create(x:yv, y:xv)
-    puts "X:" + yv.to_s + "Y:" + xv.to_s
+    cond = rand(0...12)
+    if cond == 1
+      Town.create(x:xv, y:yv, level:rand(1...7))
+      puts "Town Created"
+    end
+    Map.create(x:xv, y:yv)
+    puts "X:" + xv.to_s + "Y:" + yv.to_s
   end
 end
