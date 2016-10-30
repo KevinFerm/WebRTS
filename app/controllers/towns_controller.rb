@@ -4,6 +4,12 @@ class TownsController < ApplicationController
     @building = Building.where(town_id:@town.id)
   end
 
+  #GET
+  def getTowns
+    @towns = Town.where(user_id:params[:user_id])
+    render json: @towns
+  end
+
   #POST
   def build
     #Check if current_user can actually afford it

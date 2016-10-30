@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/town/:id', to: 'towns#town', as: 'town'
   post '/town/build', to: 'towns#build'
   post '/town/move', to: 'towns#move'
+  get '/town/gettowns/:user_id', to: 'towns#getTowns'
 end
