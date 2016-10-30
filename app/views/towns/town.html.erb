@@ -34,7 +34,11 @@
             </div>
       <% end %>
     <% end %>
-    <h2>Incoming Attacks:</h2>
+    <h2>Incoming:</h2>
+    <% @incoming.each do |inc| %>
+      Type: <%= if inc.move_type == false then "Support" else "Attack" end %>
+        <div class="countdown" id=<%= inc.done_at %>></div>
+    <% end %>
     <h2>Build:</h2>
     Coins: <%= current_user.coins %> <br>
     Cost: 10 coins per 5x built
