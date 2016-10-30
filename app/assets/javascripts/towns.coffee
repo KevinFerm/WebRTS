@@ -21,7 +21,7 @@ CountDownTimer = (dt, selector) ->
     selector.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs"
 
   timer = setInterval showRemaining, 1000
-$ ->
+document.addEventListener 'turbolinks:load', ->
   countdowns = document.getElementsByClassName("countdown")
   for i in [0...countdowns.length]
     CountDownTimer countdowns[i].id, countdowns[i]
