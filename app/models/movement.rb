@@ -42,7 +42,7 @@ class Movement < ApplicationRecord
             #Attack code here -- Later
           when false
             to_town.bowmen = movement.bowmen + to_town.bowmen
-            to_town.swordsmen = movement.swordsmen + to_town.bowmen
+            to_town.swordsmen = movement.swordsmen + to_town.swordsmen
         end
         if to_town.save
           movement.destroy
