@@ -9,6 +9,8 @@
 <p>
   <% if @town.user == current_user %>
     <h2>Troops</h2>
+    <h4>Swordsmen:</h4> <%= @town.swordsmen %> <br>
+    <h4>Bowmen:</h4> <%= @town.bowmen %>
     <h2>Support with troops:</h2>
     <%= form_tag("/town/move", method: "POST") do %>
         <h4 id="user_id" userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
