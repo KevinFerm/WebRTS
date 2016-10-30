@@ -16,5 +16,7 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-
+every 1.minute do
+  runner "Building.buildHandler"
+end
 # Learn more: http://github.com/javan/whenever

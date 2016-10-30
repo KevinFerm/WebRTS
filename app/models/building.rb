@@ -14,4 +14,26 @@ class Building < ApplicationRecord
     end
   end
 
+  #Cron Job for handling the building of troops and adding them to the right towns at the right time
+  #As whenever can only do 1.minute at the least (I think? Will check later), the precision will be low for the time being
+  def self.buildHandler
+    buildings = Building.all
+    buildings.each do |building|
+      time = Time.now.to_i
+      if time-building.done_at >= 0
+        town = Town.find(building.town_id)
+        case building.type
+          when "bowmen"
+            town.bowmen = town.bowmen + (amount*5)
+          when "swordsmen"
+            town.swordsmen = town.swordsmen + (amount*5)
+        end
+        if town.save
+          puts "Saved building, now destroying entry"
+          building.destroy
+        end
+      end
+    end
+  end
+
 end
