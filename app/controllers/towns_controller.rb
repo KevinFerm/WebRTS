@@ -10,6 +10,11 @@ class TownsController < ApplicationController
     render json: @towns
   end
 
+  #GET Buildhandler
+  def buildhandler
+    Building.buildHandler()
+  end
+
   #POST
   def build
     #Check if current_user can actually afford it
