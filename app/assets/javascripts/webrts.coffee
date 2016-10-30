@@ -1,7 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
+document.addEventListener 'turbolinks:load', ->
+  console.log "DOM READY"
   #DrawMap
   #drawMap(50,50,12)
   if $('#game_map').attr("mapstart")
