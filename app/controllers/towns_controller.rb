@@ -1,4 +1,5 @@
 class TownsController < ApplicationController
+  #GET
   def town
     @town = Town.find(params[:id])
     @building = Building.where(town_id:@town.id)
@@ -8,7 +9,7 @@ class TownsController < ApplicationController
     end
   end
 
-  #GET
+  #GET for JQuery
   def getTowns
     @towns = Town.where(user_id:params[:user_id])
     render json: @towns
@@ -17,6 +18,12 @@ class TownsController < ApplicationController
   #GET Buildhandler
   def buildhandler
     Building.buildHandler()
+    render html: "hej"
+  end
+
+  #GET movehandler
+  def movehandler
+    Movement.moveHandler()
     render html: "hej"
   end
 
