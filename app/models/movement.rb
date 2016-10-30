@@ -31,7 +31,7 @@ class Movement < ApplicationRecord
   end
 
   def self.moveHandler
-    movements = Movement.All
+    movements = Movement.all
     movements.each do |movement|
       time = Time.now.to_i
       from_town = Town.find(movement.from_town)

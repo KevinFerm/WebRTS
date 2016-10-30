@@ -10,5 +10,5 @@ function moveHandler() {
 setInterval(function () {
     buildHandler();
     moveHandler();
-    Console.log("Ran");
+    console.log("Ran");
 }, 10000);
