@@ -1,7 +1,7 @@
 var http = require('http');
 
 function buildHandler() {
-    http.get('localhost:3000/buildhandler');
+    http.get('http://localhost:3000/buildhandler');
 }
 
 setInterval(function () {

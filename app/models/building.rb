@@ -23,11 +23,11 @@ class Building < ApplicationRecord
       time = Time.now.to_i
       if time-building.done_at >= 0
         town = Town.find(building.town_id)
-        case building.type
+        case building.troop_type
           when "bowmen"
-            town.bowmen = town.bowmen + (amount*5)
+            town.bowmen = town.bowmen + (building.amount*5)
           when "swordsmen"
-            town.swordsmen = town.swordsmen + (amount*5)
+            town.swordsmen = town.swordsmen + (building.amount*5)
         end
         if town.save
           puts "Saved building, now destroying entry"

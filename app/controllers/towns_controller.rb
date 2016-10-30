@@ -13,6 +13,7 @@ class TownsController < ApplicationController
   #GET Buildhandler
   def buildhandler
     Building.buildHandler()
+    render html: "hej"
   end
 
   #POST
