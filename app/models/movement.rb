@@ -26,9 +26,29 @@ class Movement < ApplicationRecord
         else
           return false
         end
+      end
     end
-
   end
 
-end
+  def self.moveHandler
+    movements = Movement.All
+    movements.each do |movement|
+      time = Time.now.to_i
+      from_town = Town.find(movement.from_town)
+      to_town = Town.find(movement.to_town)
+      if time - movement.done_at >= 0
+        case movement.move_type
+          when true
+            #Attack code here -- Later
+          when false
+            to_town.bowmen = movement.bowmen + to_town.bowmen
+            to_town.swordsmen = movement.swordsmen + to_town.bowmen
+        end
+        if to_town.save
+          movement.destroy
+        end
+      end
+    end
+  end
+
 end
