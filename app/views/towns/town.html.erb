@@ -10,7 +10,20 @@
   <% if @town.user == current_user %>
     <h2>Troops</h2>
     <h2>Support with troops:</h2>
-      <h4>From:</h4>
+    <%= form_tag("/town/move", method: "POST") do %>
+        <h4 id="user_id" userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
+        <h4>Amounts:
+            <%= label_tag :bowmen, "Bowmen:" %>
+            <%= number_field_tag :bowmen,nil, in: 1...100 %>
+            <%= label_tag :swordsmen, "Swordsmen" %>
+            <%= number_field_tag :swordsmen,nil, in: 1...100 %>
+            <%= submit_tag "Send Support" %>
+
+            <%= hidden_field_tag :move_type, '0' %>
+            <%= hidden_field_tag :to_town_id, @town.id %>
+            <%= hidden_field_tag :from_user, current_user.id %>
+            <%= hidden_field_tag :to_user, @town.user.id %>
+    <% end %>
     <h2>Queue:</h2>
     <% if @building %>
       <% @building.each do |inst| %>

@@ -1,6 +1,26 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+#Turbolinks event listener, DOM READY
+document.addEventListener 'turbolinks:load', ->
+  userid = $('#user_id').attr('userid')
+
+  select_town = $('#support_from_town')
+  $.ajax '/town/gettowns/'+userid.toString(),
+    type: 'GET',
+    dataType: 'json'
+    success: (data, textStatus, jqXHR) ->
+      select = $('<select name="from_town_id" id="from_town_id">')
+      select_town.append(select)
+      for k,v of data
+        town = $('<option value="' +v.id.toString()+ '">'+v.id.toString()+'</option>')
+        select.append(town)
+
+  #COUNTDOWN STUFF
+  countdowns = document.getElementsByClassName("countdown")
+  for i in [0...countdowns.length]
+    CountDownTimer countdowns[i].id, countdowns[i]
+
 CountDownTimer = (dt, selector) ->
   end = new Date(dt*1000) #Unix timestamp from the DB
   _second = 1000
@@ -21,9 +41,16 @@ CountDownTimer = (dt, selector) ->
     selector.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs"
 
   timer = setInterval showRemaining, 1000
-document.addEventListener 'turbolinks:load', ->
-  countdowns = document.getElementsByClassName("countdown")
-  for i in [0...countdowns.length]
-    CountDownTimer countdowns[i].id, countdowns[i]
-#for countdown in countdowns do ->
-#  CountDownTimer "01/01/2017 00:00 AM", countdown
+
+getTownsFromUser = (user_id) ->
+  dat = ''
+  $.ajax '/town/gettowns/'+user_id.toString(),
+    type: 'GET',
+    dataType: 'json'
+    success: (data, textStatus, jqXHR) ->
+      console.log dat = data
+      return
+  return dat
+
+
+
