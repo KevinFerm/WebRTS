@@ -42,17 +42,20 @@ class TownsController < ApplicationController
 
   #POST
   def move
-    if params[:from_user] == current_user.id
+    puts params[:from_user]
+    puts current_user.id
+    if params[:from_user] == current_user.id.to_s
+      puts "Then this is true|"
       if Movement.beginMovement(params[:move_type], params[:bowmen], params[:swordsmen], params[:from_town_id], params[:to_town_id], params[:from_user], params[:to_user])
         flash[:notice] = "You successfully sent troops to this village"
-        redirect_to town_url(params[:from_town_id])
+        redirect_to town_url(params[:to_town_id])
       else
         flash[:alert] = "You don't have permission to send troops here!"
-        redirect_to town_url(params[:from_town_id])
+        redirect_to town_url(params[:to_town_id])
       end
     else
-      flash[:alert] = "You don't have permission to send troops here!"
-      redirect_to town_url(params[:from_town_id])
+      flash[:alert] = "You don't have permission to send troops herezzz!"
+      redirect_to town_url(params[:to_town_id])
     end
   end
 
