@@ -16,6 +16,7 @@ class Building < ApplicationRecord
 
   #Cron Job for handling the building of troops and adding them to the right towns at the right time
   #As whenever can only do 1.minute at the least (I think? Will check later), the precision will be low for the time being
+  #Also run on node.js server from GET request since I'm on windows
   def self.buildHandler
     buildings = Building.all
     buildings.each do |building|
