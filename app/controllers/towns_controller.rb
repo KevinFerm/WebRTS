@@ -1,4 +1,5 @@
 class TownsController < ApplicationController
+  attr_accessor :title, :town
   #GET
   #Possibly lower the amount of queries being sent from the controller
   def town
@@ -14,6 +15,19 @@ class TownsController < ApplicationController
   def getTowns
     @towns = Town.where(user_id:params[:user_id])
     render json: @towns
+  end
+
+  #PATCH
+  def changeTitle
+    @town = Town.find(params[:id])
+    @town.title = params[:town][:title]
+    if @town.save
+      flash[:notice] = "You've changed the title of this town to: "+params[:town][:title]
+      redirect_to town_path(params[:id])
+    else
+      flash[:notice] = "Something went wrong changing the title to: "+params[:town][:title]
+      redirect_to town_path(params[:id])
+    end
   end
 
   #GET Buildhandler
@@ -69,6 +83,11 @@ class TownsController < ApplicationController
       flash[:alert] = "You don't have permission to send troops herezzz!"
       redirect_to town_url(params[:to_town_id])
     end
+  end
+
+  private
+  def town_params
+    params.required(:town).permit(:title)
   end
 
 end
