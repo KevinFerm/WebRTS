@@ -12,4 +12,14 @@ class Town < ApplicationRecord
     return ((town2.x - town1.x) + (town2.y - town1.y)).abs
   end
 
+  def self.addTownOnRegister(user_id)
+    x = rand(0...99)
+    y = rand(0...99)
+    if Town.where(x:x,y:y)
+      self.addTownOnRegister(user_id)
+    else
+      Town.create(user_id:user_id,x:x,y:y,level:3)
+    end
+  end
+
 end
