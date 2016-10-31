@@ -8,7 +8,7 @@
     <button id="up_button">^</button>
     <button id="left_button"><</button>
   <button id="right_button">></button>
-  <div id="game_map" mapstart="50,50" mapsize="12">
+  <div id="game_map" mapstart="<%= current_user.towns[0].x %>,<%= current_user.towns[0].y %>" mapsize="12">
     </div>
     <button id="down_button">v</button>
   </div>
