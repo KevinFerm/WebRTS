@@ -33,15 +33,15 @@ document.addEventListener 'turbolinks:load', ->
   $('#left_button').on "click", ->
     console.log "Navigating map LEFT"
     mapstart = $('#game_map').attr("mapstart").split(',')
-    y = +mapstart[1]-5
-    renderMap((+mapstart[0]), (+mapstart[1]-5), $('#game_map').attr("mapsize"))
+    y = +mapstart[1]+5
+    renderMap((+mapstart[0]), (+mapstart[1]+5), $('#game_map').attr("mapsize"))
     $('#game_map').attr("mapstart", mapstart[0].toString()+","+y.toString())
 
   $('#right_button').on "click", ->
     console.log "Navigating map RIGHT"
     mapstart = $('#game_map').attr("mapstart").split(',')
-    y = +mapstart[1]+5
-    renderMap((+mapstart[0]), (+mapstart[1]+5), $('#game_map').attr("mapsize"))
+    y = +mapstart[1]-5
+    renderMap((+mapstart[0]), (+mapstart[1]-5), $('#game_map').attr("mapsize"))
     $('#game_map').attr("mapstart", mapstart[0].toString()+","+y.toString())
     ######
     #####MAP NAVIGATION BLOCK END
