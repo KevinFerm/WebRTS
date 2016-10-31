@@ -19,8 +19,8 @@ Town max level = 16
 *Planned only
 
 #Working right now:
-Navigating the map
-View towns
-Build new troops
-Send support to towns you own
-Completion timers
+* Navigating the map
+* View towns
+* Build new troops
+* Send support to towns you own
+* Completion timers
