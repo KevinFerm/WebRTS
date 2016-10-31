@@ -1,13 +1,15 @@
 <h2>Welcome to the profile of <%= @user.username.titleize %></h2>
-<%= @user.towns.count %>
-Incoming:
+<%= @user.towns.count %> <br>
+Incoming: <br>
 <% @incoming.each do |inc| %>
+    From: <%= inc.from %> To: <%= inc.to %>
     Type: <%= if inc.move_type == false then "Support" else "Attack" end %>
     <div class="countdown" id=<%= inc.done_at %>></div>
 <% end %>
 
-Outgoing:
+Outgoing: <br>
 <% @outgoing.each do |outg| %>
+    From: <%= outg.from %> To: <%= outg.to %>
     Type: <%= if outg.move_type == false then "Support" else "Attack" end %>
     <div class="countdown" id=<%= outg.done_at %>></div>
 <% end %>

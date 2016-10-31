@@ -3,18 +3,19 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #Turbolinks event listener, DOM READY
 document.addEventListener 'turbolinks:load', ->
-  userid = $('#user_id').attr('userid')
 
-  select_town = $('#support_from_town')
-  $.ajax '/town/gettowns/'+userid.toString(),
-    type: 'GET',
-    dataType: 'json'
-    success: (data, textStatus, jqXHR) ->
-      select = $('<select name="from_town_id" id="from_town_id">')
-      select_town.append(select)
-      for k,v of data
-        town = $('<option value="' +v.id.toString()+ '">'+v.id.toString()+'</option>')
-        select.append(town)
+  userid = $('#user_id').attr('userid')
+  if userid
+    select_town = $('#support_from_town')
+    $.ajax '/town/gettowns/'+userid.toString(),
+      type: 'GET',
+      dataType: 'json'
+      success: (data, textStatus, jqXHR) ->
+        select = $('<select name="from_town_id" id="from_town_id">')
+        select_town.append(select)
+        for k,v of data
+          town = $('<option value="' +v.id.toString()+ '">'+v.id.toString()+'</option>')
+          select.append(town)
 
   #COUNTDOWN STUFF
   countdowns = document.getElementsByClassName("countdown")
