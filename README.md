@@ -32,3 +32,8 @@ Town max level = 16
 * Build new troops
 * Send support to towns you own
 * Completion timers
+
+#Running
+    rake db:migrate
+    rake db:seed
+You need to run the node server in assets/node aswell
