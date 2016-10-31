@@ -1,6 +1,9 @@
 <h2>Welcome to the profile of <%= @user.username.titleize %></h2>
 <%= @user.towns.count %> <br>
 <h2>Towns:</h2>
+<% @towns.each do |town| %>
+    <%= link_to town.id, town_path(town.id) %> <br>
+<% end %>
 <%= will_paginate @towns %>
 Incoming: <br>
 <% @incoming.each do |inc| %>
