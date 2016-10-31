@@ -2,6 +2,7 @@ class Town < ApplicationRecord
   belongs_to :user, optional:true
   belongs_to :map, optional:true
   has_many :buildings
+  self.per_page = 10
   validates :x, uniqueness: {scope: :y}
 
   #Again lots of queries. Reminder: Come back and check on this function
@@ -15,11 +16,14 @@ class Town < ApplicationRecord
   def self.addTownOnRegister(user_id)
     x = rand(0...99)
     y = rand(0...99)
-    if Town.where(x:x,y:y)
-      self.addTownOnRegister(user_id)
-    else
+    town = Town.create(user_id:user_id,x:x,y:y,level:3)
+    if !town.id
+      x = rand(0...99)
+      y = rand(0...99)
       Town.create(user_id:user_id,x:x,y:y,level:3)
     end
+
   end
+
 
 end

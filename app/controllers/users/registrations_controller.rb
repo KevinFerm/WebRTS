@@ -9,7 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     super
+     super do |user|
+       Town.addTownOnRegister(user.id)
+     end
    end
 
   # GET /resource/edit
