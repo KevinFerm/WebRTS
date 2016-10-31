@@ -5,7 +5,7 @@
     <h3>Abandoned</h3>
 <% end %>
 <h3>Level: <%= @town.level %></h3>
-<h3>X: <%= @town.x %> Y: <%= @town.y %> - Show on map</h3>
+<h3>X: <%= @town.x %> Y: <%= @town.y %> - <%= link_to 'Show on map', map_path(@town.x, @town.y) %></h3>
 <p>
   <% if @town.user == current_user %>
     <h2>Troops</h2>
@@ -54,3 +54,12 @@
     <% end %>
   <% end %>
 </p>
+<h2>Map</h2>
+<div id="game_container">
+  <button id="up_button">^</button>
+  <button id="left_button"><</button>
+  <button id="right_button">></button>
+  <div id="game_map" mapstart="<%= @town.x %>,<%= @town.y %>" mapsize="12">
+  </div>
+  <button id="down_button">v</button>
+</div>
