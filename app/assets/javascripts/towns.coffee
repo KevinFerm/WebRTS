@@ -14,7 +14,7 @@ document.addEventListener 'turbolinks:load', ->
         select = $('<select name="from_town_id" id="from_town_id">')
         select_town.append(select)
         for k,v of data
-          town = $('<option value="' +v.id.toString()+ '">'+v.id.toString()+'</option>')
+          town = $('<option value="' +v.id.toString()+ '">'+v.title.toString()+'</option>')
           select.append(town)
 
   #COUNTDOWN STUFF

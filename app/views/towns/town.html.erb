@@ -8,11 +8,11 @@
 <h3>X: <%= @town.x %> Y: <%= @town.y %> - <%= link_to 'Show on map', map_path(@town.x, @town.y) %></h3>
 <p>
   <% if @town.user == current_user %>
-    <%= form_for(@town) do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %>
-      <%= f.submit "Save Title", class: "btn btn-primary" %>
-    <% end %>
+      <%= form_for(@town) do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+        <%= f.submit "Save Title", class: "btn btn-primary" %>
+      <% end %>
     <h2>Troops</h2>
     <h4>Swordsmen:</h4> <%= @town.swordsmen %> <br>
     <h4>Bowmen:</h4> <%= @town.bowmen %>
