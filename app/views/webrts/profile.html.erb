@@ -1,1 +1,11 @@
 <h2>Welcome to the profile of <%= @user.username.titleize %></h2>
+<%= @user.towns.count %>
+Incoming:
+<% @incoming.each do |incoming| %>
+    <%= incoming.done_at %>
+<% end %>
+
+Outgoing:
+<% @outgoing.each do |outgoing| %>
+    <%= outgoing.done_at %>
+<% end %>

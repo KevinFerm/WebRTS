@@ -35,7 +35,7 @@ class Movement < ApplicationRecord
   end
 
   def self.getOutgoingByUserId(user_id)
-    return movement.where(from_user:user_id)
+    return Movement.where(from_user:user_id)
   end
 
   def self.moveHandler
