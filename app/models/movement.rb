@@ -31,11 +31,11 @@ class Movement < ApplicationRecord
   end
 
   def self.getIncomingByUserId(user_id)
-    return Movement.where(to_user:user_id)
+    return Movement.where(to:user_id)
   end
 
   def self.getOutgoingByUserId(user_id)
-    return Movement.where(from_user:user_id)
+    return Movement.where(from:user_id)
   end
 
   def self.moveHandler
