@@ -8,7 +8,8 @@ class Town < ApplicationRecord
   def self.getTownDistance(town1_id, town2_id)
     town1 = Town.find(town1_id)
     town2 = Town.find(town2_id)
-    return (town2.x - town1.x) + (town2.y - town1.y)
+    puts ((town2.x - town1.x) + (town2.y - town1.y)).abs
+    return ((town2.x - town1.x) + (town2.y - town1.y)).abs
   end
 
 end

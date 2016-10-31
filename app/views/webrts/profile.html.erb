@@ -2,14 +2,14 @@
 <%= @user.towns.count %> <br>
 Incoming: <br>
 <% @incoming.each do |inc| %>
-    From: <%= inc.from %> To: <%= inc.to %>
+    From: <%= link_to inc.from_town, town_path(inc.from_town) %> To: <%= link_to inc.from_town, town_path(inc.to_town) %>
     Type: <%= if inc.move_type == false then "Support" else "Attack" end %>
     <div class="countdown" id=<%= inc.done_at %>></div>
 <% end %>
 
 Outgoing: <br>
 <% @outgoing.each do |outg| %>
-    From: <%= outg.from %> To: <%= outg.to %>
+    From: <%= link_to outg.from_town, town_path(outg.from_town) %> To: <%= link_to outg.from_town, town_path(outg.to_town) %>
     Type: <%= if outg.move_type == false then "Support" else "Attack" end %>
     <div class="countdown" id=<%= outg.done_at %>></div>
 <% end %>
