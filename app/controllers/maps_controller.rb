@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  before_action :authenticate_user!
   #GET
   def getMapData
     @map = Map.getMapData(params[:x],params[:y],params[:size])

@@ -1,4 +1,5 @@
 class TownsController < ApplicationController
+  before_action :authenticate_user!
   #GET
   #Possibly lower the amount of queries being sent from the controller
   def town

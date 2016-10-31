@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/town/build', to: 'towns#build'
   post '/town/move', to: 'towns#move'
   get '/town/gettowns/:user_id', to: 'towns#getTowns'
+
+  #Handlers
   get 'buildhandler', to: 'towns#buildhandler'
   get 'movehandler', to: 'towns#movehandler'
 end

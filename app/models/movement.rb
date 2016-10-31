@@ -30,6 +30,14 @@ class Movement < ApplicationRecord
     end
   end
 
+  def self.getIncomingByUserId(user_id)
+    return Movement.where(to_user:user_id)
+  end
+
+  def self.getOutgoingByUserId(user_id)
+    return movement.where(from_user:user_id)
+  end
+
   def self.moveHandler
     movements = Movement.all
     movements.each do |movement|
