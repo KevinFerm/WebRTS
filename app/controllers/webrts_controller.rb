@@ -1,5 +1,6 @@
 class WebrtsController < ApplicationController
   before_action :authenticate_user!
+  #GET
   def index
     @maps = Map.all
   end

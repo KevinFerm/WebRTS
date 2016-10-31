@@ -1,5 +1,6 @@
 class TownsController < ApplicationController
   #GET
+  #Possibly lower the amount of queries being sent from the controller
   def town
     @town = Town.find(params[:id])
     @building = Building.where(town_id:@town.id)

@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  #GET
   def getMapData
     @map = Map.getMapData(params[:x],params[:y],params[:size])
     @size = params[:size]
