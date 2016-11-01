@@ -5,12 +5,12 @@
           <% if tile.town %>
               <% if tile.town.user_id %>
                 <% if tile.town.user_id == current_user.id %>
-                  <%= link_to '<div class="town_user"></div>'.html_safe, town_path(tile.town.id) %>
+                  <%= link_to '<div class="town_user"></div>'.html_safe, town_path(tile.town.id), :'data-tooltip' => "Owner:"+tile.town.user.username+" Level: "+tile.town.level.to_s %>
                 <% else %>
-                      <%= link_to '<div class="town_enemy"></div>'.html_safe, town_path(tile.town.id) %>
+                      <%= link_to '<div class="town_enemy"></div>'.html_safe, town_path(tile.town.id), :'data-tooltip' => "Owner:"+tile.town.user.username+" Level: "+tile.town.level.to_s %>
                 <% end %>
               <% else %>
-                  <%= link_to '<div class="town_empty"></div>'.html_safe, town_path(tile.town.id) %>
+                  <%= link_to '<div class="town_empty"></div>'.html_safe, town_path(tile.town.id), {:data-tooltip=>"Abandoned, Level: "+tile.town.level.to_s} %>
               <% end %>
         <% end %>
         </div>
