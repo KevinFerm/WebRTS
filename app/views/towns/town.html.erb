@@ -57,6 +57,19 @@
 
         <%= hidden_field_tag :town_id, @town.id %>
     <% end %>
+    <% if current_user.coins >= 10 %>
+      <h3>Quick Build:</h3>
+        <div id="quick_build">
+          <%= form_tag("/town/build", method: "POST") do %>
+              <%= hidden_field_tag :amount, 1 %>
+              <%= select_tag :type, '<option value="bowmen">Bowmen</option><option value="swordsmen">Swordsmen</option>'.html_safe %>
+              <%= submit_tag "Buy one" %>
+              <%= submit_tag "Buy "+((current_user.coins/10)/2).to_s %>
+              <%= submit_tag "Buy "+(current_user.coins/10).to_s %>
+              <%= hidden_field_tag :town_id, @town.id %>
+          <% end %>
+        </div>
+    <% end %>
   <% end %>
 </p>
 <h2>Map</h2>
