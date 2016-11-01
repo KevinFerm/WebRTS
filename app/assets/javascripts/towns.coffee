@@ -4,6 +4,21 @@
 #Turbolinks event listener, DOM READY
 document.addEventListener 'turbolinks:load', ->
 
+  $("#quick_one").on "click", ->
+    form = $(this).parent()
+    form.find("#quick_value").val(1)
+    form.submit()
+
+  $("#quick_half").on "click", ->
+    form = $(this).parent()
+    form.find("#quick_value").val($(this).val())
+    form.submit()
+
+  $("#quick_all").on "click", ->
+    form = $(this).parent()
+    form.find("#quick_value").val($(this).val())
+    form.submit()
+
   userid = $('#user_id').attr('userid')
   if userid
     select_town = $('#support_from_town')

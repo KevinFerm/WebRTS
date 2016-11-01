@@ -60,12 +60,12 @@
     <% if current_user.coins >= 10 %>
       <h3>Quick Build:</h3>
         <div id="quick_build">
-          <%= form_tag("/town/build", method: "POST") do %>
-              <%= hidden_field_tag :amount, 1 %>
+          <%= form_tag("/town/build", method: "POST", id:"quick_build_form") do %>
+              <%= hidden_field_tag :amount, 1, id:"quick_value" %>
               <%= select_tag :type, '<option value="bowmen">Bowmen</option><option value="swordsmen">Swordsmen</option>'.html_safe %>
-              <%= submit_tag "Buy one" %>
-              <%= submit_tag "Buy "+((current_user.coins/10)/2).to_s %>
-              <%= submit_tag "Buy "+(current_user.coins/10).to_s %>
+              <%= button_tag "Buy one", id:"quick_one", :type => 'button' %>
+              <%= button_tag "Buy "+((current_user.coins/10)/2).to_s, id:"quick_half", value: ((current_user.coins/10)/2), :type => 'button' %>
+              <%= button_tag "Buy "+(current_user.coins/10).to_s, id: "quick_all",value: (current_user.coins/10), :type => 'button' %>
               <%= hidden_field_tag :town_id, @town.id %>
           <% end %>
         </div>
