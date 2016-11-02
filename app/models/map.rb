@@ -7,7 +7,7 @@ class Map < ApplicationRecord
     xc = xc.to_i
     yc= yc.to_i
     size = size.to_i
-    map = Map.all
+    map = Map.where(:x => (xc-(size.to_i/2))..(xc+(size/2)), :y => (yc-(size/2))...(yc+(size/2)))
     towns = Town.all
     middle = Map.where(x:xc,y:yc)
     rendered_tiles = []
