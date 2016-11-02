@@ -2,7 +2,7 @@
   <div class="col-sm-4">
 <h2><%= @town.title %></h2>
 <% if @town.user %>
-    <h3>Owner: <%= @town.user.username.titleize %></h3>
+    <h3>Owner: <%= @town.user.username.titleize %> <%= if @town.user.id == current_user.id then "(You!)" end %></h3>
     <% else %>
     <h3>Abandoned</h3>
 <% end %>
