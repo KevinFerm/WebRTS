@@ -12,13 +12,13 @@
       <h2>Attack:</h2>
       <%= form_tag("/town/move", method: "POST") do %>
         <h4 id="user_id" townid=<%= @town.id %> userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
-        <div id="troop_numbers"></div>
-        <h4>Amounts:
+        Available troops: <div id="troop_numbers"></div>
+        <h4>Amounts:</h4>
           <%= label_tag :bowmen, "Bowmen:" %>
           <%= number_field_tag :bowmen,nil, in: 1...100 %>
           <%= label_tag :swordsmen, "Swordsmen" %>
           <%= number_field_tag :swordsmen,nil, in: 1...100 %>
-          <%= submit_tag "Send Support" %>
+          <%= submit_tag "Send Attack" %>
 
           <%= hidden_field_tag :move_type, '1' %>
           <%= hidden_field_tag :to_town_id, @town.id %>
@@ -40,8 +40,8 @@
     <h2>Support with troops:</h2>
     <%= form_tag("/town/move", method: "POST") do %>
         <h4 id="user_id" townid=<%= @town.id %> userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
-        <div id="troop_numbers"></div>
-        <h4>Amounts:
+        Available troops: <div id="troop_numbers"></div>
+        <h4>Amounts:</h4>
             <%= label_tag :bowmen, "Bowmen:" %>
             <%= number_field_tag :bowmen,nil, in: 1...100 %>
             <%= label_tag :swordsmen, "Swordsmen" %>
