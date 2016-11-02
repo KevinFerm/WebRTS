@@ -7,10 +7,10 @@ class Map < ApplicationRecord
     xc = xc.to_i
     yc= yc.to_i
     size = size.to_i
-    map = Map.where(:x => (xc-(size.to_i/2))..(xc+(size/2)), :y => (yc-(size/2))...(yc+(size/2)))
-    towns = Town.where(:x => (xc-(size.to_i/2))..(xc+(size/2)), :y => (yc-(size/2))...(yc+(size/2)))
+    map = Map.where(:x => (xc-(size/2))..(xc+(size/2)), :y => (yc-(size/2))..(yc+(size/2)))
+    towns = Town.where(:x => (xc-(size/2))..(xc+(size/2)), :y => (yc-(size/2))..(yc+(size/2)))
     rendered_tiles = []
-    for xval in (xc-(size.to_i/2))...(xc+(size/2))
+    for xval in (xc-(size/2))...(xc+(size/2))
       tiles = []
       for yval in (yc-(size/2))...(yc+(size/2))
         tile = map.find {|z| z[:x] == xval && z[:y] == yval}
