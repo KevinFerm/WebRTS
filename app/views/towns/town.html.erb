@@ -11,7 +11,7 @@
   <% if @town.user != current_user %>
       <h2>Attack:</h2>
       <%= form_tag("/town/move", method: "POST") do %>
-        <h4 id="user_id" userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
+        <h4 id="user_id" townid=<%= @town.id %> userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
         <div id="troop_numbers"></div>
         <h4>Amounts:
           <%= label_tag :bowmen, "Bowmen:" %>
@@ -39,7 +39,7 @@
     <h4>Bowmen:</h4> <%= @town.bowmen %>
     <h2>Support with troops:</h2>
     <%= form_tag("/town/move", method: "POST") do %>
-        <h4 id="user_id" userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
+        <h4 id="user_id" townid=<%= @town.id %> userid=<%= current_user.id %>>From Town:</h4><div id="support_from_town"></div>
         <div id="troop_numbers"></div>
         <h4>Amounts:
             <%= label_tag :bowmen, "Bowmen:" %>

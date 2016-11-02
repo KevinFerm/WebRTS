@@ -20,6 +20,7 @@ document.addEventListener 'turbolinks:load', ->
     form.submit()
 
   userid = $('#user_id').attr('userid')
+  townid = $('#user_id').attr('townid')
   t_data = null
   if userid
     select_town = $('#support_from_town')
@@ -32,6 +33,8 @@ document.addEventListener 'turbolinks:load', ->
         select_town.append(select)
         for k,v of data
           if v.swordsmen == 0 && v.bowmen == 0
+            continue
+          if townid == v.id.toString()
             continue
           town = $('<option value="' +v.id.toString()+ '" tkey="'+k+'">'+v.title.toString()+'</option>')
           select.append(town)
