@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-sm-4">
 <h2><%= @town.title %></h2>
 <% if @town.user %>
     <h3>Owner: <%= @town.user.username.titleize %></h3>
@@ -25,6 +27,7 @@
           <%= hidden_field_tag :from_user, current_user.id %>
           <%= hidden_field_tag :to_user, @town.user.id %>
     <% end %>
+        </div>
   <% end %>
 
   <!--BELOW IS FOR TOWN OWNED BY THE USER ONLY-->
@@ -53,6 +56,8 @@
             <%= hidden_field_tag :from_user, current_user.id %>
             <%= hidden_field_tag :to_user, @town.user.id %>
     <% end %>
+
+        </div><div class="col-sm-4">
     <h2>Queue:</h2>
     <% if @building %>
       <% @building.each do |inst| %>
@@ -92,14 +97,20 @@
           <% end %>
         </div>
     <% end %>
+  </div>
   <% end %>
 </p>
-<h2>Map</h2>
-<div id="game_container">
-  <button id="up_button">^</button>
-  <button id="left_button"><</button>
-  <button id="right_button">></button>
-  <div id="game_map" mapstart="<%= @town.x %>,<%= @town.y %>" mapsize="12">
+
+  <div class="col-sm-4">
+    <h2>Map</h2>
+    <div id="game_container">
+      <button id="up_button">^</button>
+      <button id="left_button"><</button>
+      <button id="right_button">></button>
+      <div id="game_map" mapstart="<%= @town.x %>,<%= @town.y %>" mapsize="12">
+      </div>
+      <button id="down_button">v</button>
+    </div>
   </div>
-  <button id="down_button">v</button>
+
 </div>
