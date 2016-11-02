@@ -50,7 +50,6 @@ document.addEventListener 'turbolinks:load', ->
 #Self explanatory, renders the map based on data from the server
 renderMap = (x,y,size) ->
   if $('#game_map')
-    $('#game_map').empty()
     $.ajax '/getmapdata',
       type: 'POST'
       dataType: 'html'
@@ -58,6 +57,7 @@ renderMap = (x,y,size) ->
       error: (jqXHR, textStatus, errorThrown) ->
         console.log textStatus
       success: (data, textStatus, jqXHR) ->
+        $('#game_map').empty()
         $('#game_map').append(data)
 
 #Draw map in a size x size grid, with the coordinates in the middle
