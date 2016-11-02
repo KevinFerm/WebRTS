@@ -31,10 +31,14 @@ document.addEventListener 'turbolinks:load', ->
         select = $('<select name="from_town_id" id="from_town_id">')
         select_town.append(select)
         for k,v of data
+          if v.swordsmen == 0 && v.bowmen == 0
+            continue
           town = $('<option value="' +v.id.toString()+ '" tkey="'+k+'">'+v.title.toString()+'</option>')
           select.append(town)
+          sel = $("#from_town_id").find("option:selected").attr('tkey')
           $('#troop_numbers').empty()
-          $('#troop_numbers').append('Swordsmen: '+t_data[0].swordsmen.toString()+' Bowmen: '+t_data[0].bowmen.toString())
+          $('#troop_numbers').append('Swordsmen: '+t_data[sel].swordsmen.toString()+' Bowmen: '+t_data[sel].bowmen.toString())
+
   $(document).on "change","#from_town_id", ->
     key = $(this).find("option:selected").attr('tkey')
     $('#troop_numbers').empty()
