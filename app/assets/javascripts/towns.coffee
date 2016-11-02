@@ -20,17 +20,26 @@ document.addEventListener 'turbolinks:load', ->
     form.submit()
 
   userid = $('#user_id').attr('userid')
+  t_data = null
   if userid
     select_town = $('#support_from_town')
     $.ajax '/town/gettowns/'+userid.toString(),
       type: 'GET',
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
+        t_data = data
         select = $('<select name="from_town_id" id="from_town_id">')
         select_town.append(select)
         for k,v of data
-          town = $('<option value="' +v.id.toString()+ '">'+v.title.toString()+'</option>')
+          town = $('<option value="' +v.id.toString()+ '" tkey="'+k+'">'+v.title.toString()+'</option>')
           select.append(town)
+          $('#troop_numbers').empty()
+          $('#troop_numbers').append('Swordsmen: '+t_data[0].swordsmen.toString()+' Bowmen: '+t_data[0].bowmen.toString())
+  $(document).on "change","#from_town_id", ->
+    key = $(this).find("option:selected").attr('tkey')
+    $('#troop_numbers').empty()
+    $('#troop_numbers').append('Swordsmen: '+t_data[key].swordsmen.toString()+' Bowmen: '+t_data[key].bowmen.toString())
+    console.log $(this).find("option:selected").attr('tkey')
 
   #COUNTDOWN STUFF
   countdowns = document.getElementsByClassName("countdown")
