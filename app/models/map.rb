@@ -8,8 +8,7 @@ class Map < ApplicationRecord
     yc= yc.to_i
     size = size.to_i
     map = Map.where(:x => (xc-(size.to_i/2))..(xc+(size/2)), :y => (yc-(size/2))...(yc+(size/2)))
-    towns = Town.all
-    middle = Map.where(x:xc,y:yc)
+    towns = Town.where(:x => (xc-(size.to_i/2))..(xc+(size/2)), :y => (yc-(size/2))...(yc+(size/2)))
     rendered_tiles = []
     for xval in (xc-(size.to_i/2))...(xc+(size/2))
       tiles = []
