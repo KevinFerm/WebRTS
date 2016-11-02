@@ -329,8 +329,8 @@ $flashes: (
       width: 32px;
       height: 32px;
       float: left;
-      border: solid #222222 1px;
-      background-color: #3d8b3d;
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+      background-image: image-url('grass.png');
       font-size: 9px;
       display: inline-block;
     }
@@ -391,6 +391,7 @@ $flashes: (
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
   background-color: #730E15;
   margin: auto;
 }
@@ -399,7 +400,8 @@ $flashes: (
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #5cb85c;
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+  background-color: #238827;
   margin: auto;
 }
 
