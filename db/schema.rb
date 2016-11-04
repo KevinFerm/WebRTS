@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031165746) do
+ActiveRecord::Schema.define(version: 20161104212438) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "troop_type", default: "", null: false
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20161031165746) do
     t.integer  "swordsmen",  default: 0,      null: false
     t.integer  "bowmen",     default: 0,      null: false
     t.string   "title",      default: "Town", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name",       default: "",  null: false
+    t.integer  "health",     default: 0,   null: false
+    t.integer  "armor",      default: 0,   null: false
+    t.integer  "max_hit",    default: 0,   null: false
+    t.integer  "min_hit",    default: 0,   null: false
+    t.integer  "attack",     default: 0,   null: false
+    t.integer  "speed",      default: 0,   null: false
+    t.integer  "defense",    default: 0,   null: false
+    t.string   "range",      default: "0", null: false
+    t.string   "effects",    default: "0", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
