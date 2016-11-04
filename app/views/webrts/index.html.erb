@@ -1,6 +1,29 @@
 <h1>WebRTS Game</h1>
 <% if current_user.isAdmin? %>
     You are admin man!!
+    <% @units.each do |unit| %>
+        <%= unit.name %>
+        <%= unit.range %>
+    <% end %>
+    <%= form_for @unit, url: '/createunit' do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :range %>
+        <%= f.number_field :range, class: "form-control" %>
+        <%= f.label :health %>
+        <%= f.number_field :health, class: "form-control" %>
+        <%= f.label :armor %>
+        <%= f.number_field :armor, class: "form-control" %>
+        <%= f.label :attack %>
+        <%= f.number_field :attack, class: "form-control" %>
+        <%= f.label :max_hit %>
+        <%= f.number_field :max_hit, class: "form-control" %>
+        <%= f.label :min_hit %>
+        <%= f.number_field :min_hit, class: "form-control" %>
+        <%= f.label :speed %>
+        <%= f.number_field :speed, class: "form-control" %>
+        <%= f.submit "Save Title", class: "btn btn-primary" %>
+    <% end %>
 <% end %>
 <div id="row">
     <h2>Game Map</h2>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/map/:x/:y', to: 'maps#map', as: 'map'
   get '/map', to: 'maps#map'
 
+  post '/createunit', to: 'webrts#createUnit'
+
   patch 'town/:id', to: 'towns#changeTitle'
 
   #Handlers

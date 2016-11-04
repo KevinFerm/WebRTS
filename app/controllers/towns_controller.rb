@@ -25,7 +25,7 @@ class TownsController < ApplicationController
       flash[:notice] = "You've changed the title of this town to: "+params[:town][:title]
       redirect_to town_path(params[:id])
     else
-      flash[:notice] = "Something went wrong changing the title to: "+params[:town][:title]
+      flash[:alert] = "Something went wrong changing the title to: "+params[:town][:title]
       redirect_to town_path(params[:id])
     end
   end

@@ -5,6 +5,22 @@ class WebrtsController < ApplicationController
     @maps = Map.all
     @incoming = Movement.getIncomingByUserId(current_user.id)
     @outgoing = Movement.getOutgoingByUserId(current_user.id)
+    @units = Unit.all
+    @unit = Unit.new
+    puts @units
+  end
+
+  #POST
+  def createUnit
+    params.permit!
+    @unit = Unit.create(params[:unit])
+    if @unit
+      flash[:notice] = "You've added a new unit"
+      redirect_to '/'
+    else
+      flash[:alert] = "You've failed to create unit somehow"
+      redirect_to '/'
+    end
   end
 
   #Find the profile you're trying to view
@@ -16,5 +32,11 @@ class WebrtsController < ApplicationController
     end
     @incoming = Movement.getIncomingByUserId(current_user.id)
     @outgoing = Movement.getOutgoingByUserId(current_user.id)
+  end
+
+  #UnitParams
+  private
+  def unit_params
+    params.require(:unit).permit(:name, :health, :armor, :speed, :attack, :max_hit, :min_hit, :range)
   end
 end
