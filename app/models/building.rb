@@ -4,13 +4,10 @@ class Building < ApplicationRecord
 
   def self.build(type, town_id, user_id, amount)
     time = Time.now
-    done_at = time + amount.to_i.minutes
     #Validate type
-    if(type == "bowmen" || type == "swordsmen")
-      Building.create(troop_type: type, town_id: town_id, user_id: user_id, done_at: done_at.to_i, amount: amount)
-      return true
-    else
-      return false
+    for x in 1..amount
+      done_at = time + x.to_i.minutes
+      Building.create(troop_type: type, town_id: town_id, user_id: user_id, done_at: done_at.to_i, amount: 1)
     end
   end
 
