@@ -4,6 +4,7 @@ class TownsController < ApplicationController
   #Possibly lower the amount of queries being sent from the controller
   def town
     @town = Town.find(params[:id])
+    @population = @town.population
     @building = Building.where(town_id:@town.id)
     @units = Unit.all
     if @town.user_id == current_user.id

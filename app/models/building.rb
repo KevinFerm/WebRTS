@@ -25,8 +25,8 @@ class Building < ApplicationRecord
         end
         pop = JSON.parse(town.population)
         unit = Unit.find(building.unit)
-        if pop[building.unit]
-          amount = pop[unit.name] + 5
+        if pop[unit.name]
+          pop[unit.name] += 5
         else
           pop.store(unit.name, 5)
         end
