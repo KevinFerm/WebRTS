@@ -32,26 +32,37 @@ document.addEventListener 'turbolinks:load', ->
         select = $('<select name="from_town_id" id="from_town_id">')
         select_town.append(select)
         for k,v of data
-          if v.swordsmen == 0 && v.bowmen == 0
+          pop = $.parseJSON(v.population)
+          if pop == null
             continue
           if townid == v.id.toString()
             continue
+          #console.log v.population
           town = $('<option value="' +v.id.toString()+ '" tkey="'+k+'">'+v.title.toString()+'</option>')
           select.append(town)
           sel = $("#from_town_id").find("option:selected").attr('tkey')
-          $('#troop_numbers').empty()
-          $('#troop_numbers').append('Swordsmen: '+t_data[sel].swordsmen.toString()+' Bowmen: '+t_data[sel].bowmen.toString())
+          if t_data
+            initTroopCount(sel, t_data)
 
   $(document).on "change","#from_town_id", ->
     key = $(this).find("option:selected").attr('tkey')
     $('#troop_numbers').empty()
-    $('#troop_numbers').append('Swordsmen: '+t_data[key].swordsmen.toString()+' Bowmen: '+t_data[key].bowmen.toString())
-    console.log $(this).find("option:selected").attr('tkey')
+    pop = $.parseJSON(t_data[key].population)
+    #console.log pop
+    for key,val of pop
+      $('#troop_numbers').append(key+': '+ val.toString()+' ')
 
   #COUNTDOWN STUFF
   countdowns = document.getElementsByClassName("countdown")
   for i in [0...countdowns.length]
     CountDownTimer countdowns[i].id, countdowns[i]
+
+initTroopCount = (key, t_data) ->
+  $('#troop_numbers').empty()
+  pop = $.parseJSON(t_data[key].population)
+  for key,val of pop
+    console.log key
+    $('#troop_numbers').append(key+': '+ val.toString()+' ')
 
 CountDownTimer = (dt, selector) ->
   end = new Date(dt*1000) #Unix timestamp from the DB
