@@ -5,6 +5,7 @@ class TownsController < ApplicationController
   def town
     @town = Town.find(params[:id])
     @building = Building.where(town_id:@town.id)
+    @units = Unit.all
     if @town.user_id == current_user.id
       @incoming = Movement.where(to_town:@town.id)
       @outgoing = Movement.where(from_town:@town.id)
