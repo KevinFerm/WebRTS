@@ -5,7 +5,7 @@ class TownsController < ApplicationController
   def town
     @town = Town.find(params[:id])
     @population = @town.population
-    @building = Building.where(town_id:@town.id)
+    @building = Building.where(town_id:@town.id).paginate(:page => params[:page])
     @units = Unit.all
     if @town.user_id == current_user.id
       if @town.population

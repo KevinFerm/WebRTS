@@ -92,6 +92,7 @@
               <%= inst.amount %>x <%= inst.troop_type %><div class="countdown" id=<%= inst.done_at %>></div>
             </div>
       <% end %>
+              <%= will_paginate @building %>
     <% end %>
     <h2>Incoming:</h2>
     <% @incoming.each do |inc| %>
