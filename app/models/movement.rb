@@ -9,15 +9,18 @@ class Movement < ApplicationRecord
     done_at = time + distance.minutes
     town = Town.find(from_town)
     if Movement.create(move_type: move_type,
-                       units: units.to_JSON,
+                       units: units.to_json,
                        from_town: from_town,
                        to_town: to_town,
                        from: from,
                        to: to,
                        done_at: done_at.to_i)
       puts "Saved DB!!!!!"
-      town.swordsmen = (town.swordsmen-swordsmen.to_i)
-      town.bowmen = (town.bowmen-bowmen.to_i)
+      curr_pop = eval(town.population)
+      curr_pop.each do |unit, value|
+        curr_pop[unit] = units[unit] - value.to_i
+      end
+      town.population = curr_pop.to_json
       town.save
       return true
     else
