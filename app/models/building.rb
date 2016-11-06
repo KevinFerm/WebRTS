@@ -1,7 +1,7 @@
 class Building < ApplicationRecord
   belongs_to :user
   belongs_to :town
-
+  self.per_page = 10
   def self.build(unit, town_id, user_id, amount)
     time = Time.now
     #Validate type

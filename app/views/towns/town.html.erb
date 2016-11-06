@@ -89,7 +89,7 @@
     <% if @building %>
       <% @building.each do |inst| %>
             <div class="build">
-              <%= inst.amount %>x <%= inst.troop_type %><div class="countdown" id=<%= inst.done_at %>></div>
+              <%= inst.amount %>x <%= Unit.getUnitName(inst.unit) %><div class="countdown" id=<%= inst.done_at %>></div>
             </div>
       <% end %>
               <%= will_paginate @building %>
