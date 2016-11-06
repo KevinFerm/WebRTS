@@ -37,6 +37,11 @@ class Movement < ApplicationRecord
     return Movement.where(from:user_id)
   end
 
+  def self.attackHandler(from_town, to_town, data)
+
+  end
+
+  #Handles troop movements between towns
   def self.moveHandler
     movements = Movement.all
     movements.each do |movement|

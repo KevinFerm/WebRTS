@@ -2,6 +2,8 @@ class Building < ApplicationRecord
   belongs_to :user
   belongs_to :town
   self.per_page = 10
+
+  #Creates staggered troops by an amount specified
   def self.build(unit, town_id, user_id, amount)
     time = Time.now
     #Validate type
