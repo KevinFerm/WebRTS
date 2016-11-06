@@ -38,9 +38,18 @@ class Movement < ApplicationRecord
   end
 
   def self.attackHandler(from_town, to_town, data)
+    #Vars
     units = Unit.all #Get all units to compare and get effects
     defending_pop = eval(to_town.population)#Evil eval
     attacking_pop = eval(from_town.population)#Evil eval
+    #Setup
+      #Get all units from the data and set them up with variables for health, speed, damage etc
+      #Unit vars are multiplied by the amount of that unit that are present in the attack
+
+  end
+
+  #Calculates total damage of a unit versus another unit and returns the winner minus the amount of troops he would have lost
+  def self.damageCalculator(attacking, defending)
 
   end
 
