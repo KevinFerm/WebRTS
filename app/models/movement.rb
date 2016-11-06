@@ -16,7 +16,7 @@ class Movement < ApplicationRecord
                        to: to,
                        done_at: done_at.to_i)
       puts "Saved DB!!!!!"
-      curr_pop = eval(town.population)
+      curr_pop = eval(town.population)  #again eval function
       curr_pop.each do |unit, value|
         curr_pop[unit] = units[unit] - value.to_i
       end
@@ -47,8 +47,11 @@ class Movement < ApplicationRecord
           when true
             #Attack code here -- Later
           when false
-            to_town.bowmen = movement.bowmen + to_town.bowmen
-            to_town.swordsmen = movement.swordsmen + to_town.swordsmen
+            units = eval(movement.units)
+            units.each do |unit, value|
+              to_town.units[unit] = to_town.units[unit] + value
+            end
+            to_town.units = to_town.units.to_json
         end
         if to_town.save
           movement.destroy
