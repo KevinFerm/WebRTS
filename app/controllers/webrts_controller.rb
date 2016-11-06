@@ -37,6 +37,10 @@ class WebrtsController < ApplicationController
   #UnitParams
   private
   def unit_params
+    @units = Unit.all
     params.require(:unit).permit(:name, :health, :armor, :speed, :attack, :max_hit, :min_hit, :range)
+    @units.each do |unit|
+      params.require(:units).permit(unit.name)
+    end
   end
 end

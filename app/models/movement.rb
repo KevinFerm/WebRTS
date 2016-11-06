@@ -3,7 +3,7 @@ class Movement < ApplicationRecord
 
   ##This function and the ones I use now make a total of five queries, really should think about another way to do this
   #Calculates time and sends it to the database for the cron job to take over later.
-  def self.beginMovement(move_type, bowmen, swordsmen, from_town, to_town, from, to)
+  def self.beginMovement(move_type, units, from_town, to_town, from, to)
     distance = Town.getTownDistance(from_town, to_town)
     time = Time.now
     done_at = time + distance.minutes

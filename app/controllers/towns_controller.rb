@@ -75,7 +75,7 @@ class TownsController < ApplicationController
     puts current_user.id
     if params[:from_user] == current_user.id.to_s
       puts "Then this is true|"
-      if Movement.beginMovement(params[:move_type], params[:bowmen], params[:swordsmen], params[:from_town_id], params[:to_town_id], params[:from_user], params[:to_user])
+      if Movement.beginMovement(params[:move_type], params[:units], params[:from_town_id], params[:to_town_id], params[:from_user], params[:to_user])
         flash[:notice] = "You successfully sent troops to this village"
         redirect_to town_url(params[:to_town_id])
       else
@@ -92,6 +92,13 @@ class TownsController < ApplicationController
   def town_params
     params.required(:town).permit(:title)
     params.required(:unit).permit(:id)
+  end
+  def unit_params
+    @units = Unit.all
+    params.require(:unit).permit(:name, :health, :armor, :speed, :attack, :max_hit, :min_hit, :range)
+    @units.each do |unit|
+      params.require(:units).permit(unit.name)
+    end
   end
 
 end
