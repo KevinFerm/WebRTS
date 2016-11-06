@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106153937) do
+ActiveRecord::Schema.define(version: 20161106162738) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "troop_type", default: "", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20161106153937) do
     t.integer  "x"
     t.integer  "y"
     t.integer  "level"
-    t.string   "population"
+    t.string   "population", default: "{}"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"

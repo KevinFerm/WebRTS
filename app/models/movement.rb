@@ -18,7 +18,9 @@ class Movement < ApplicationRecord
       puts "Saved DB!!!!!"
       curr_pop = eval(town.population)  #again eval function
       curr_pop.each do |unit, value|
-        curr_pop[unit] = units[unit] - value.to_i
+        if units[unit].to_i >= value.to_i
+          curr_pop[unit] = units[unit].to_i - value.to_i
+        end
       end
       town.population = curr_pop.to_json
       town.save
@@ -49,9 +51,9 @@ class Movement < ApplicationRecord
           when false
             units = eval(movement.units)
             units.each do |unit, value|
-              to_town.units[unit] = to_town.units[unit] + value
+              to_town.population[unit] = to_town.population[unit] + value
             end
-            to_town.units = to_town.units.to_json
+            to_town.population = to_town.population.to_json
         end
         if to_town.save
           movement.destroy
