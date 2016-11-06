@@ -8,6 +8,9 @@ class TownsController < ApplicationController
     @building = Building.where(town_id:@town.id)
     @units = Unit.all
     if @town.user_id == current_user.id
+      if @town.population
+        @town.population = JSON.parse(@town.population)
+      end
       @incoming = Movement.where(to_town:@town.id)
       @outgoing = Movement.where(from_town:@town.id)
     end
