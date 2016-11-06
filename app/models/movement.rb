@@ -49,11 +49,20 @@ class Movement < ApplicationRecord
           when true
             #Attack code here -- Later
           when false
-            units = eval(movement.units)
-            units.each do |unit, value|
-              to_town.population[unit] = to_town.population[unit] + value
+            units = eval(movement.units) #Evil eval again
+            if !to_town.population
+              to_town.population = "{}"
             end
-            to_town.population = to_town.population.to_json
+            pop = eval(to_town.population) #Another evil eval
+            units.each do |unit, value|
+              puts pop
+              if pop[unit]
+                pop[unit] += value.to_i
+              else
+                pop.store(unit, value.to_i)
+              end
+            end
+            to_town.population = pop.to_json
         end
         if to_town.save
           movement.destroy
