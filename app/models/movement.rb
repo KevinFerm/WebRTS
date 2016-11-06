@@ -15,7 +15,6 @@ class Movement < ApplicationRecord
                        from: from,
                        to: to,
                        done_at: done_at.to_i)
-      puts "Saved DB!!!!!"
       curr_pop = eval(town.population)  #again eval function
       curr_pop.each do |unit, value|
         if units[unit].to_i >= value.to_i
@@ -55,7 +54,6 @@ class Movement < ApplicationRecord
             end
             pop = eval(to_town.population) #Another evil eval
             units.each do |unit, value|
-              puts pop
               if pop[unit]
                 pop[unit] += value.to_i
               else
