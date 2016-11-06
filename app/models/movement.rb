@@ -8,25 +8,20 @@ class Movement < ApplicationRecord
     time = Time.now
     done_at = time + distance.minutes
     town = Town.find(from_town)
-    if town.swordsmen >= swordsmen.to_i || town.swordsmen == 0
-      if town.bowmen >= bowmen.to_i || town.bowmen == 0
-        if Movement.create(move_type: move_type,
-                           bowmen: bowmen.to_i,
-                           swordsmen: swordsmen.to_i,
-                           from_town: from_town,
-                           to_town: to_town,
-                           from: from,
-                           to: to,
-                           done_at: done_at.to_i)
-          puts "Saved DB!!!!!"
-          town.swordsmen = (town.swordsmen-swordsmen.to_i)
-          town.bowmen = (town.bowmen-bowmen.to_i)
-          town.save
-          return true
-        else
-          return false
-        end
-      end
+    if Movement.create(move_type: move_type,
+                       units: units.to_JSON,
+                       from_town: from_town,
+                       to_town: to_town,
+                       from: from,
+                       to: to,
+                       done_at: done_at.to_i)
+      puts "Saved DB!!!!!"
+      town.swordsmen = (town.swordsmen-swordsmen.to_i)
+      town.bowmen = (town.bowmen-bowmen.to_i)
+      town.save
+      return true
+    else
+      return false
     end
   end
 
