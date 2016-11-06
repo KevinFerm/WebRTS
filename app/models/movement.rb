@@ -38,6 +38,9 @@ class Movement < ApplicationRecord
   end
 
   def self.attackHandler(from_town, to_town, data)
+    units = Unit.all #Get all units to compare and get effects
+    defending_pop = eval(to_town.population)#Evil eval
+    attacking_pop = eval(from_town.population)#Evil eval
 
   end
 
